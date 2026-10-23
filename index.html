@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🎃 Lâu đài Từ vựng Halloween</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;min-height:100vh;font-family:Georgia,'Segoe UI',serif;color:#f4e9ff;background:radial-gradient(circle at 94% 2%,#ffd27a 0 36px,transparent 38px),linear-gradient(#150a26,#2a1240 60%,#3b1a2e);overflow-x:hidden}
+.bat{position:fixed;font-size:26px;opacity:.5;animation:fly 14s linear infinite;pointer-events:none}
+@keyframes fly{from{transform:translateX(-60px)}to{transform:translateX(110vw) translateY(40px)}}
+#app{max-width:560px;margin:0 auto;padding:16px;position:relative}
+h1{text-align:center;font-size:28px;margin:6px 0;color:#ff9a2e;text-shadow:0 0 14px #ff6a00}
+.sub{text-align:center;opacity:.8;margin-bottom:14px;font-size:14px}
+.bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;gap:8px}
+.chip{background:#ffffff18;border-radius:20px;padding:6px 12px;font-size:14px}
+button{font:inherit;cursor:pointer;border:0;border-radius:14px;color:#fff}
+.menu button{display:block;width:100%;margin:10px 0;padding:16px;font-size:18px;text-align:left;background:linear-gradient(135deg,#5b2a86,#3a1a5c);border:1px solid #ff9a2e66;box-shadow:0 4px 14px #0008}
+.menu button small{display:block;opacity:.75;font-size:13px;margin-top:3px}
+.menu button:active,.opt:active{transform:scale(.98)}
+.back{background:#ffffff22;padding:8px 14px}
+.hide{display:none}
+.card3d{perspective:900px;margin:16px 0}
+.card{height:230px;position:relative;transform-style:preserve-3d;transition:transform .5s;cursor:pointer}
+.card.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:20px;padding:16px;text-align:center;font-size:30px;border:2px solid #ff9a2e;background:linear-gradient(160deg,#4a2272,#24103a);box-shadow:0 0 24px #ff6a0055}
+.face.back2{transform:rotateY(180deg);background:linear-gradient(160deg,#7a3a00,#3a1a00);font-size:26px}
+.face small{font-size:13px;opacity:.7;margin-top:10px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.btn{background:#ff7a00;padding:12px 18px;font-size:16px}
+.btn.alt{background:#5b2a86}
+.q{font-size:28px;text-align:center;margin:20px 0;padding:18px;background:#ffffff12;border-radius:16px;min-height:90px;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.q small{font-size:13px;opacity:.7;margin-bottom:6px}
+.opt{display:block;width:100%;margin:8px 0;padding:14px;background:#3a1a5c;border:1px solid #ffffff33;font-size:17px}
+.opt.good{background:#1f8a3a}.opt.bad{background:#a01c2c}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.tile{aspect-ratio:3/4;background:#3a1a5c;border:1px solid #ff9a2e66;font-size:12px;padding:3px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.15}
+.tile.cover{font-size:28px}
+.tile.open{background:#7a3a00}.tile.done{background:#1f8a3a;opacity:.7}
+input[type=text]{width:100%;padding:14px;font-size:20px;border-radius:14px;border:2px solid #ff9a2e;background:#150a26;color:#fff;text-align:center;margin:8px 0}
+.msg{text-align:center;min-height:28px;font-size:17px}
+.end{text-align:center;padding:30px 10px}
+.end .big{font-size:60px}
+.opt:disabled{opacity:.3}
+.avatar{position:relative;width:130px;height:120px;margin:4px auto 14px;font-size:70px;text-align:center;line-height:120px;animation:fl 3s ease-in-out infinite}
+.avatar .hat{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:40px;line-height:1}
+.avatar .pet{position:absolute;right:-26px;bottom:6px;font-size:38px;line-height:1}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.shop{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.item{background:#3a1a5c;border:1px solid #ff9a2e66;padding:12px 6px;font-size:14px;text-align:center}
+.item b{display:block;font-size:34px;font-weight:400;margin-bottom:4px}
+.item.eq{background:#1f6a3a}.item.own{background:#4a2c78}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:center}
+.tabs .chip{color:#fff;border:0}.tabs .on{background:#ff7a00}
+.shake{animation:sh .3s}
+@keyframes sh{25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+</style>
+</head>
+<body>
+<div class="bat" style="top:12%">🦇</div><div class="bat" style="top:30%;animation-delay:-6s">🦇</div><div class="bat" style="top:55%;animation-delay:-10s">🦇</div>
+<div id="app">
+<h1>🎃 Lâu đài Từ vựng 👻</h1>
+<div class="sub">Thu thập kẹo 🍬 bằng cách đánh bại bóng ma từ vựng!</div>
+<div class="bar"><span class="chip">🍬 <b id="candy">0</b></span><span class="chip">🏆 Kỷ lục: <b id="best">0</b></span><button class="chip" id="snd" style="color:#fff">🔊</button></div>
+
+<div id="menu" class="menu"><div id="av"></div>
+<button data-g="flash">🔮 Cầu pha lê<small>Lật thẻ, nghe phát âm để làm quen từ</small></button>
+<button data-g="quiz">🧙‍♀️ Thử thách Phù thủy<small>Trắc nghiệm, 3 mạng bí ngô, combo nhận thêm điểm</small></button>
+<button data-g="match">🦇 Lật thẻ Dơi<small>Ghép từ tiếng Anh với nghĩa tiếng Việt</small></button>
+<button data-g="type">💀 Giải bùa Bộ xương<small>Gõ từ tiếng Anh từ nghĩa tiếng Việt</small></button>
+<button data-g="detect">🕵️ Thám tử Lâu đài Ma<small>Phá án: đọc lời khai, tìm dấu vân tay, bắt đúng hung thủ</small></button>
+<button data-g="shop">🛒 Cửa hàng Kẹo<small>Đổi kẹo lấy nhân vật, mũ, thú cưng, hình nền và bùa hộ mệnh</small></button>
+</div>
+
+<div id="game" class="hide"></div>
+</div>
+
+<script>
+const RAW=`Express|Bày tỏ, diễn đạt, thể hiện
+Attempt to do sth|Cố gắng, nỗ lực làm gì
+Desire|Khao khát, mong muốn
+Severe|Nghiêm trọng, gay gắt, khốc liệt
+Eager to do sth|Háo hức, tha thiết làm gì
+Tempting|Hấp dẫn, lôi cuốn, cám dỗ
+Intriguing|Kích thích sự tò mò, cuốn hút
+Simultaneously|Đồng thời, cùng một lúc
+Extinct|Tuyệt chủng
+Stay up late|Thức khuya
+Dormitory|Ký túc xá
+Campus|Khuôn viên trường
+Drop out|Bỏ học
+Tuition|Học phí
+Figure out|Tìm ra câu trả lời
+Curiosity|Sự tò mò
+Major (noun)|Chuyên ngành đại học
+Access|Tiếp cận
+Attend|Tham gia
+Take|Tham gia (một kỳ thi)
+Enroll|Đăng ký (một khóa học)
+Aim|Nhắm đến, đặt mục tiêu
+Abroad|Nước ngoài, ở nước ngoài
+Admission|Sự nhận vào (một tổ chức)
+Qualification|Bằng cấp (nói chung)
+Spot|Phát hiện
+Extra class|Lớp học thêm
+Overseas|Ở nước ngoài
+Gifted|Có năng khiếu
+Major (verb)|Học ngành (nào đó)
+Studies|Việc học hành
+Accurate|Chính xác
+Graduate|Tốt nghiệp
+Certificate|Chứng chỉ
+Review|Ôn bài, ôn tập
+Submit|Nộp (cái gì đó)
+Practical|Thực tế, thực tiễn
+Aroma|Mùi thơm
+Cue|Tín hiệu, dấu hiệu
+Puzzle|Câu đố, vấn đề thách đố
+Scepticism|Sự hoài nghi
+Ally|Đồng minh
+Indication|Dấu hiệu, chỉ dấu
+Obstacle|Trở ngại, rào cản, khó khăn
+Nature|Đặc tính, bản chất
+Circumstance|Tình trạng, hoàn cảnh
+Humankind|Nhân loại, loài người
+Intuition|Trực giác
+Routine|Lịch trình, thói quen
+Threshold|Ngưỡng, một ngưỡng nào đó
+Likelihood|Khả năng xảy ra
+Means|Cách thức, phương tiện
+Medium|Trung gian, phương tiện trung gian
+Technique|Phương pháp, kỹ thuật
+Funeral|Đám tang
+Bilingual|Sử dụng được 2 ngôn ngữ`;
+const W=RAW.split('\n').map((l,i)=>{const [en,vi]=l.split('|');return{id:i,en,vi}});
+const $=s=>document.querySelector(s);
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const clean=s=>s.replace(/\(.*?\)/g,'').trim();
+const norm=s=>clean(s).toLowerCase().replace(/\s+sth$/,'').replace(/\s+/g,' ');
+const short=v=>v.split(',')[0];
+
+// ---- state & sound ----
+let candy=0,best=0,sound=true,ctx;
+try{candy=+localStorage.getItem('hw_candy')||0;best=+localStorage.getItem('hw_best')||0}catch(e){}
+function save(){try{localStorage.setItem('hw_candy',candy);localStorage.setItem('hw_best',best)}catch(e){}$('#candy').textContent=candy;$('#best').textContent=best}
+function tone(f,d,type='sine',delay=0,vol=.15){if(!sound)return;try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=f;const t=ctx.currentTime+delay;g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+d)}catch(e){}}
+const sfx={
+ ok(){tone(660,.12,'triangle');tone(880,.2,'triangle',.1)},
+ bad(){tone(200,.25,'sawtooth');tone(140,.35,'sawtooth',.15)},
+ flip(){tone(420,.08,'square',0,.07)},
+ win(){[523,659,784,1047].forEach((f,i)=>tone(f,.25,'triangle',i*.12))},
+ lose(){[330,277,233,196].forEach((f,i)=>tone(f,.35,'sawtooth',i*.2,.1))},
+ spooky(){tone(150,.6,'sine',0,.1);tone(155,.6,'sine',0,.1)}
+};
+function say(t){if(!sound||!window.speechSynthesis)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(clean(t).replace(/\bsth\b/,'something'));u.lang='en-US';u.rate=.9;speechSynthesis.speak(u)}catch(e){}}
+$('#snd').onclick=()=>{sound=!sound;$('#snd').textContent=sound?'🔊':'🔇';if(sound)sfx.ok()};
+function addCandy(n){candy+=n;save()}
+
+// ---- navigation ----
+function openGame(g){$('#menu').classList.add('hide');const el=$('#game');el.classList.remove('hide');sfx.spooky();({flash,quiz,match,type,detect,shop})[g]()}
+function home(){renderAv();speechSynthesis&&speechSynthesis.cancel();$('#game').classList.add('hide');$('#menu').classList.remove('hide');save()}
+document.querySelectorAll('[data-g]').forEach(b=>b.onclick=()=>openGame(b.dataset.g));
+const hdr=(title,extra='')=>`<div class="bar"><button class="back" onclick="home()">← Menu</button><b>${title}</b><span>${extra}</span></div>`;
+function ending(title,emoji,text,again){const win=emoji!=='💀';win?sfx.win():sfx.lose();$('#game').innerHTML=hdr(title)+`<div class="end"><div class="big">${emoji}</div><h2>${text}</h2><div class="row"><button class="btn" onclick="${again}()">Chơi lại</button><button class="btn alt" onclick="home()">Về lâu đài</button></div></div>`}
+
+// ---- 1. Flashcards ----
+let fc=[],fi=0;
+function flash(){fc=shuf(W);fi=0;drawFlash()}
+function drawFlash(){const w=fc[fi];
+$('#game').innerHTML=hdr('🔮 Cầu pha lê',`${fi+1}/${fc.length}`)+`<div class="card3d"><div class="card" id="c" onclick="flipCard()"><div class="face">${w.en}<small>Chạm để lật 👆</small></div><div class="face back2">${w.vi}</div></div></div>
+<div class="row"><button class="btn alt" onclick="fgo(-1)">◀</button><button class="btn" onclick="say(fc[fi].en)">🔊 Nghe</button><button class="btn alt" onclick="fgo(1)">▶</button></div>`;say(w.en)}
+function flipCard(){$('#c').classList.toggle('flip');sfx.flip()}
+function fgo(d){fi=(fi+d+fc.length)%fc.length;sfx.flip();drawFlash()}
+
+// ---- 2. Quiz ----
+let Q;
+function quiz(){Q={list:shuf(W).slice(0,12),i:0,lives:startLives(),score:0,streak:0,lock:false};nextQ()}
+function nextQ(){
+ if(Q.i>=Q.list.length){if(Q.score>best)best=Q.score;addCandy(Q.score/10|0);return ending('🧙‍♀️ Phù thủy','🏆',`Bạn thắng! ${Q.score} điểm`,'quiz')}
+ const w=Q.list[Q.i],rev=Math.random()<.5;Q.rev=rev;Q.w=w;Q.lock=false;
+ const opts=shuf([w,...shuf(W.filter(x=>x.id!==w.id)).slice(0,3)]);
+ $('#game').innerHTML=hdr('🧙‍♀️ Phù thủy','🎃'.repeat(Q.lives)||'💀')+`<div class="bar"><span class="chip">Câu ${Q.i+1}/${Q.list.length}</span><span class="chip">⭐ ${Q.score}</span><span class="chip">🔥 x${Q.streak}</span></div>
+ <div class="q" id="q"><small>${rev?'Từ tiếng Anh nào có nghĩa là:':'Nghĩa của từ:'}</small>${rev?w.vi:w.en}</div>`+
+ opts.map(o=>`<button class="opt" data-id="${o.id}">${rev?o.en:short(o.vi)==o.vi?o.vi:o.vi}</button>`).join('');
+ if(!rev)say(w.en);
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(b));
+}
+function answer(b){if(Q.lock)return;Q.lock=true;const ok=+b.dataset.id===Q.w.id;
+ if(ok){b.classList.add('good');Q.streak++;Q.score+=10+Math.min(Q.streak-1,5)*2;sfx.ok();if(Q.rev)say(Q.w.en)}
+ else{b.classList.add('bad','shake');document.querySelector(`[data-id="${Q.w.id}"]`).classList.add('good');Q.streak=0;Q.lives--;sfx.bad()}
+ Q.i++;
+ setTimeout(()=>{if(Q.lives<=0){addCandy(Q.score/10|0);ending('🧙‍♀️ Phù thủy','💀',`Hết mạng! ${Q.score} điểm`,'quiz')}else nextQ()},1100)}
+
+// ---- 3. Memory match ----
+let M;
+function match(){const ws=shuf(W).slice(0,8);const cards=shuf(ws.flatMap(w=>[{id:w.id,t:w.en,k:'en'},{id:w.id,t:short(w.vi),k:'vi'}]));M={cards,sel:[],found:0,moves:0,lock:false,t0:Date.now()};
+ $('#game').innerHTML=hdr('🦇 Lật thẻ Dơi','<span id="mv">0 lượt</span>')+'<div class="grid">'+cards.map((c,i)=>`<button class="tile cover" data-i="${i}">🦇</button>`).join('')+'</div><p class="msg">Ghép từ tiếng Anh với nghĩa của nó!</p>';
+ document.querySelectorAll('.tile').forEach(b=>b.onclick=()=>pick(b))}
+function pick(b){if(M.lock||b.classList.contains('open')||b.classList.contains('done'))return;
+ const c=M.cards[b.dataset.i];b.classList.remove('cover');b.classList.add('open');b.textContent=c.t;sfx.flip();if(c.k==='en')say(c.t);M.sel.push(b);
+ if(M.sel.length===2){M.moves++;$('#mv').textContent=M.moves+' lượt';const [a,d]=M.sel,ca=M.cards[a.dataset.i],cd=M.cards[d.dataset.i];M.lock=true;
+  if(ca.id===cd.id&&ca.k!==cd.k){setTimeout(()=>{a.className=d.className='tile done';sfx.ok();M.found++;M.sel=[];M.lock=false;
+   if(M.found===8){const s=Math.max(10,200-M.moves*8);if(s>best)best=s;addCandy(s/10|0);ending('🦇 Lật thẻ Dơi','🎉',`Xong sau ${M.moves} lượt! +${s/10|0} 🍬`,'match')}},500)}
+  else setTimeout(()=>{[a,d].forEach(x=>{x.className='tile cover';x.textContent='🦇'});sfx.bad();M.sel=[];M.lock=false},900)}}
+
+// ---- 4. Typing ----
+let T;
+function type(){T={list:shuf(W).slice(0,10),i:0,lives:startLives(),score:0};nextT()}
+function nextT(){
+ if(T.i>=T.list.length){if(T.score>best)best=T.score;addCandy(T.score/10|0);return ending('💀 Giải bùa','🏆',`Phá bùa xong! ${T.score} điểm`,'type')}
+ const w=T.list[T.i];T.hint=false;
+ $('#game').innerHTML=hdr('💀 Giải bùa','🎃'.repeat(T.lives))+`<div class="bar"><span class="chip">Từ ${T.i+1}/${T.list.length}</span><span class="chip">⭐ ${T.score}</span></div>
+ <div class="q"><small>Gõ từ tiếng Anh có nghĩa:</small>${w.vi}${/\(.*\)/.test(w.en)?`<small>${w.en.match(/\(.*\)/)[0]}</small>`:''}</div>
+ <input type="text" id="inp" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${norm(w.en).replace(/[^ ]/g,'_')}">
+ <div class="row"><button class="btn alt" onclick="hint()">💡 Gợi ý (-5)</button><button class="btn" onclick="checkT()">Kiểm tra</button></div><p class="msg" id="m"></p>`;
+ const i=$('#inp');i.focus();i.onkeydown=e=>{if(e.key==='Enter')checkT()}}
+function hint(){const w=T.list[T.i];T.hint=true;$('#m').textContent='Bắt đầu bằng: '+w.en[0]+' … ('+norm(w.en).length+' ký tự)';sfx.flip()}
+function checkT(){const w=T.list[T.i],v=$('#inp').value;if(!v.trim())return;
+ if(norm(v)===norm(w.en)){T.score+=T.hint?5:10;sfx.ok();say(w.en);$('#m').textContent='✅ Chính xác!';T.i++;setTimeout(nextT,900)}
+ else{T.lives--;sfx.bad();$('#inp').classList.add('shake');$('#m').innerHTML='❌ Đáp án: <b>'+w.en+'</b>';T.i++;
+  setTimeout(()=>{if(T.lives<=0){addCandy(T.score/10|0);ending('💀 Giải bùa','💀',`Bị bộ xương bắt! ${T.score} điểm`,'type')}else nextT()},1600)}}
+// ---- 5. Detective ----
+let D;
+function detect(){D={list:shuf(W).slice(0,6),i:0,lives:startLives(),score:0};nextD()}
+function nextD(){
+ if(D.i>=D.list.length){if(D.score>best)best=D.score;addCandy(D.score/10|0);return ending('🕵️ Thám tử','🏆',`Phá án thành công! ${D.score} điểm`,'detect')}
+ const w=D.list[D.i],k=norm(w.en);D.w=w;D.used=0;D.done=false;
+ const same=shuf(W.filter(x=>x.id!==w.id&&norm(x.en)[0]===k[0])).slice(0,2);
+ const pool=[w,...same];pool.push(...shuf(W.filter(x=>!pool.includes(x))).slice(0,6-pool.length));
+ $('#game').innerHTML=hdr('🕵️ Thám tử','🎃'.repeat(D.lives))+`<div class="bar"><span class="chip">Vụ án ${D.i+1}/${D.list.length}</span><span class="chip">⭐ ${D.score}</span></div>
+ <div class="q"><small>📁 Lời khai nhân chứng:</small>Hung thủ là từ có nghĩa “${w.vi}”</div>
+ <div class="row"><button class="btn alt" id="c1" onclick="clue(1)">🔍 Dấu vân tay (-10)</button><button class="btn alt" id="c2" onclick="clue(2)">🎧 Nghe lời khai (-10)</button></div>
+ <p class="msg" id="m">Chọn nghi phạm để bắt giữ!</p>`+shuf(pool).map(x=>`<button class="opt" data-id="${x.id}">🕵️ ${x.en}</button>`).join('');
+ document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>arrest(b));
+}
+function clue(n){if(D.done)return;const w=D.w,k=norm(w.en);D.used++;$('#c'+n).disabled=true;sfx.flip();
+ if(n===1){$('#m').textContent=`🔍 Vân tay: bắt đầu bằng “${k[0].toUpperCase()}”, dài ${k.length} ký tự`;
+  document.querySelectorAll('.opt').forEach(b=>{const x=W[b.dataset.id],y=norm(x.en);if(y[0]!==k[0]||y.length!==k.length)b.disabled=true})}
+ else{$('#m').textContent='🎧 Đang nghe lời khai...';say(w.en)}}
+function arrest(b){if(D.done)return;const ok=+b.dataset.id===D.w.id;
+ if(ok){D.done=true;const pts=Math.max(10,30-10*D.used);D.score+=pts;b.classList.add('good');sfx.ok();say(D.w.en);$('#m').innerHTML=`✅ Bắt đúng! <b>${D.w.en}</b> = ${D.w.vi} (+${pts})`;D.i++;setTimeout(nextD,2200)}
+ else{b.classList.add('bad','shake');b.disabled=true;D.lives--;sfx.bad();
+  if(D.lives<=0){D.done=true;addCandy(D.score/10|0);setTimeout(()=>ending('🕵️ Thám tử','💀',`Hung thủ trốn thoát! ${D.score} điểm`,'detect'),900)}
+  else $('#m').textContent='❌ Bắt nhầm người! Còn '+D.lives+' mạng.'}}
+// ---- Shop ----
+const ITEMS={
+ c:[['c0','👻','Bóng ma',0],['c1','🧛','Ma cà rồng',60],['c2','🧙','Pháp sư',90],['c3','🧟','Zombie',120],['c4','🧞','Thần đèn',160],['c5','🎃','Người bí ngô',200]],
+ h:[['h0','','Không mũ',0],['h1','🧢','Mũ lưỡi trai',40],['h2','🎩','Mũ chóp',70],['h3','🎓','Mũ cử nhân',100],['h4','👑','Vương miện',150]],
+ p:[['p0','','Không thú cưng',0],['p1','🦇','Dơi con',30],['p2','🕷️','Nhện nhỏ',50],['p3','🐈‍⬛','Mèo đen',70],['p4','🦉','Cú đêm',110],['p5','🐉','Rồng con',250]],
+ b:[['b0','🌙','Đêm tím',0,'#150a26,#2a1240 60%,#3b1a2e'],['b1','🌲','Rừng ma',80,'#06160f,#12382a 60%,#1a2a1a'],['b2','🏚️','Nhà hoang',100,'#10131c,#262c3d 60%,#3a3340'],['b3','🩸','Trăng máu',150,'#1a0508,#4a0f18 60%,#2a0a14'],['b4','🌌','Vũ trụ',200,'#02030f,#10206a 60%,#3a1260']]
+};
+let inv={own:['c0','h0','p0','b0'],eq:{c:'c0',h:'h0',p:'p0',b:'b0'},amulet:0},tab='c';
+try{const x=JSON.parse(localStorage.getItem('hw_inv'));if(x&&x.eq)inv=x}catch(e){}
+function saveInv(){try{localStorage.setItem('hw_inv',JSON.stringify(inv))}catch(e){}}
+function startLives(){if(inv.amulet>0){inv.amulet--;saveInv();return 4}return 3}
+const pick1=(t)=>ITEMS[t].find(x=>x[0]===inv.eq[t])||ITEMS[t][0];
+function avatar(){return `<div class="avatar"><span class="pet">${pick1('p')[1]}</span><span class="hat">${pick1('h')[1]}</span>${pick1('c')[1]}</div>`}
+function renderAv(){$('#av').innerHTML=avatar()+(inv.amulet?`<div class="sub">🧿 Bùa hộ mệnh: ${inv.amulet}</div>`:'');document.body.style.background=`radial-gradient(circle at 94% 2%,#ffd27a 0 36px,transparent 38px),linear-gradient(${pick1('b')[4]})`}
+function shop(){drawShop('')}
+function drawShop(msg){
+ const tabs={c:'🧛 Nhân vật',h:'🎩 Mũ',p:'🐈‍⬛ Thú cưng',b:'🌌 Nền',a:'🧿 Bùa'};
+ let grid;
+ if(tab==='a')grid=`<div class="shop"><button class="item" style="grid-column:span 2" onclick="buy('a','a')"><b>🧿</b>Bùa hộ mệnh<br><small>+1 mạng ở lượt chơi kế tiếp (Phù thủy, Giải bùa, Thám tử)</small><br>Đang có: ${inv.amulet} · 🍬 40</button></div>`;
+ else grid='<div class="shop">'+ITEMS[tab].map(x=>{const own=inv.own.includes(x[0]),eq=inv.eq[tab]===x[0];
+  return `<button class="item ${eq?'eq':own?'own':''}" onclick="buy('${tab}','${x[0]}')"><b>${x[1]||'—'}</b>${x[2]}<br>${eq?'✔ Đang dùng':own?'Dùng':'🍬 '+x[3]}</button>`}).join('')+'</div>';
+ $('#game').innerHTML=hdr('🛒 Cửa hàng','🍬 '+candy)+avatar()+'<div class="tabs">'+Object.keys(tabs).map(k=>`<button class="chip ${k===tab?'on':''}" onclick="tab='${k}';drawShop('')">${tabs[k]}</button>`).join('')+'</div>'+grid+`<p class="msg">${msg}</p>`;renderBg()}
+function renderBg(){document.body.style.background=`radial-gradient(circle at 94% 2%,#ffd27a 0 36px,transparent 38px),linear-gradient(${pick1('b')[4]})`}
+function buy(t,id){
+ if(t==='a'){if(candy<40){sfx.bad();return drawShop('Không đủ kẹo! Hãy chơi thêm để kiếm kẹo 🍬')}candy-=40;inv.amulet++;sfx.win();saveInv();save();return drawShop('Đã mua bùa hộ mệnh! 🧿')}
+ const it=ITEMS[t].find(x=>x[0]===id);
+ if(!inv.own.includes(id)){if(candy<it[3]){sfx.bad();return drawShop('Không đủ kẹo! Hãy chơi thêm để kiếm kẹo 🍬')}candy-=it[3];inv.own.push(id);sfx.win();save()}else sfx.ok();
+ inv.eq[t]=id;saveInv();drawShop('Đã trang bị: '+it[2])}
+renderAv();
+save();
+</script>
+</body>
+</html>
